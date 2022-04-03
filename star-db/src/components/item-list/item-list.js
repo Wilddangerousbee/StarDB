@@ -26,13 +26,10 @@ export default class ItemList extends Component {
         <li 
             onClick={() => this.props.onSelected(item.id)}
             key={item.id} className="list-group-item">
-            {item.name}
-            {" "}
-            {item.model}
-            {" "}
-            {item.birthYear}
-            {" "}
-            {item.diameter}
+            {item.name ? `Name: ${item.name} ` : undefined}
+            {item.model ? `Model: ${item.model} ` : undefined}
+            {item.birthYear ? `Birth Year: ${item.birthYear} ` : undefined}
+            {item.diameter ? `Diameter: ${item.diameter} ` : undefined}
         </li>
       )  
     }
