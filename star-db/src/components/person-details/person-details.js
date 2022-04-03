@@ -16,6 +16,12 @@ export default class PersonDetails extends Component {
     this.setPerson();
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.personId !== this.props.personId) {
+      this.setPerson();
+    }
+  }
+
   onPersonLoaded = (person) => {
     this.setState({person})
   };

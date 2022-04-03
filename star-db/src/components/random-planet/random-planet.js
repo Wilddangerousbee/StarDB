@@ -57,7 +57,6 @@ const PlanetView = ({currentPlanet}) => {
         diameter, name, pupulstion} = currentPlanet;
     return (
         <React.Fragment>
-            
             <img className="planet-image"
                 src={urlPicture} />
             <div>
