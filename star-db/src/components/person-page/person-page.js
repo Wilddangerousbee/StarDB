@@ -3,10 +3,11 @@ import React, { Component } from "react";
 import PersonDetails from '../person-details';
 import ItemList from "../item-list";
 
+import ErrorBoundary from "../error-boundry/error-boundry";
+
 export default class PersonPage extends Component {
     state = {
         personId: 2,
-        error: false
     }
 
     onSelected = (id) => {
@@ -16,30 +17,21 @@ export default class PersonPage extends Component {
         })
     }
 
-    componentDidCatch(){
-        this.setState({
-            error: true
-        })
-    }
-    
-
     render(){
         const {personId} = this.state;
         const {selectionMethod, selectionMethodUncle} = this.props;
 
-        if (this.state.error) {
-            return <h1>Error</h1>
-        }
-
         return (
-            <div className="row mb2">
-                <div className="col-md-6">
-                    <ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>
+            <ErrorBoundary>
+                <div className="row mb2">
+                    <div className="col-md-6">
+                        <ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>
+                    </div>
+                    <div className="col-md-6">
+                        <PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>
+                    </div>
                 </div>
-                <div className="col-md-6">
-                    <PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>
-                </div>
-            </div>
+            </ErrorBoundary>
         )
     }
 }
