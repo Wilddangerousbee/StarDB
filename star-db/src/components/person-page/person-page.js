@@ -10,6 +10,7 @@ export default class PersonPage extends Component {
     }
 
     onSelected = (id) => {
+        console.log(id);
         this.setState({
             personId: id
         })
@@ -24,6 +25,7 @@ export default class PersonPage extends Component {
 
     render(){
         const {personId} = this.state;
+        const {selectionMethod, selectionMethodUncle} = this.props;
 
         if (this.state.error) {
             return <h1>Error</h1>
@@ -32,10 +34,10 @@ export default class PersonPage extends Component {
         return (
             <div className="row mb2">
                 <div className="col-md-6">
-                    <ItemList onSelected={this.onSelected}/>
+                    <ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>
                 </div>
                 <div className="col-md-6">
-                    <PersonDetails personId={personId}/>
+                    <PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>
                 </div>
             </div>
         )

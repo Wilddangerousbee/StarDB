@@ -5,7 +5,6 @@ import SwapiService from '../../services/swapi-services';
 import './person-details.css';
 
 export default class PersonDetails extends Component {
-  serviceApi = new SwapiService();
   state = {
     person: {
 
@@ -27,8 +26,8 @@ export default class PersonDetails extends Component {
   };
 
   setPerson = () => {
-    this.serviceApi
-        .getPerson(this.props.personId)
+    this.props
+        .selectionMethodUncle(this.props.personId)
         .then((person) => {this.onPersonLoaded(person)})
   }
 

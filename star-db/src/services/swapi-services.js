@@ -4,7 +4,7 @@ export default class SwapiService {
     _urlBasePictureStarship = "https://starwars-visualguide.com/assets/img/starships/";
     _urlBasePicturePerson = "https://starwars-visualguide.com/assets/img/characters/";
 
-   async getReesourse(url) {
+   getReesourse = async (url) => {
     const response = await fetch(`${this._urlBase}${url}`);
   
     if (!response.ok) {
@@ -15,32 +15,32 @@ export default class SwapiService {
     return body;
   }
 
-  async getAllPeople(){
+  getAllPeople = async () => {
     const result = await this.getReesourse(`/people/`);
     return result.results.map((person)=>this._transformPerson(person));
   }
 
-  async getPerson(id){
+  getPerson = async (id) => {
     const person = await this.getReesourse(`/people/${id}`);
     return this._transformPerson(person)
   }
 
-  async getAllStarships(){
+  getAllStarships = async () => {
     const result = await this.getReesourse(`/starships/`);
     return result.results;
   }
 
-  async getStarship(id){
+  getStarship = async (id) => {
     const starship = await this.getReesourse(`/starships/${id}`);
     return this._transformStarship(starship);
   }
 
-  async getAllPlanets(){
+  getAllPlanets = async () => {
     const result = await this.getReesourse(`/planets/`);
     return result.results;
   }
 
-  async getPlanet(id){
+  getPlanet = async (id) => {
     const planet = await this.getReesourse(`/planets/${id}`);
     return this._transformPlanet(planet);
   }
@@ -52,6 +52,7 @@ export default class SwapiService {
 
   _transformPlanet(planet){
      return {
+      id: this._getIdFromUrl(planet.url),
       urlPicture: `${this._urlBasePicturePlanet}${this._getIdFromUrl(planet.url)}.jpg`,
       pupulstion: planet.population,
       rotationPeriod: planet.rotation_period,
@@ -62,15 +63,16 @@ export default class SwapiService {
 
   _transformStarship(starship){
     return {
-     urlPicture: `${this._urlBasePictureStarship}${this._getIdFromUrl(starship.url)}.jpg`,
-     name: starship.name,
-     model: starship.model,
-     manufacturer: starship.manufacturer,
-     costInCredits: starship.cost_in_credits, 
-     length: starship.length,
-     crew: starship.crew,
-     passengers: starship.passengers,
-     cargoCapacity: starship.cargo_capacity
+    id: this._getIdFromUrl(starship.url),
+    urlPicture: `${this._urlBasePictureStarship}${this._getIdFromUrl(starship.url)}.jpg`,
+    name: starship.name,
+    model: starship.model,
+    manufacturer: starship.manufacturer,
+    costInCredits: starship.cost_in_credits, 
+    length: starship.length,
+    crew: starship.crew,
+    passengers: starship.passengers,
+    cargoCapacity: starship.cargo_capacity
    }
   }
 
