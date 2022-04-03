@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
@@ -8,6 +8,8 @@ import PersonDetails from '../person-details';
 import './app.css';
 
 const App = () => {
+  const [personId, setPersonId] = useState(1);
+
   return (
     <div>
       <Header />
@@ -18,7 +20,7 @@ const App = () => {
           <ItemList />
         </div>
         <div className="col-md-6">
-          <PersonDetails />
+          <PersonDetails personId={personId}/>
         </div>
       </div>
     </div>
