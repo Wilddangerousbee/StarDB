@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import PersonDetails from '../person-details';
 import ItemList from "../item-list";
+import Row from "../row";
 
 import ErrorBoundary from "../error-boundry/error-boundry";
 
@@ -22,14 +23,9 @@ export default class PersonPage extends Component {
 
         return (
             <ErrorBoundary>
-                <div className="row mb2">
-                    <div className="col-md-6">
-                        <ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>
-                    </div>
-                </div>
+                <Row 
+                    left={<ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>}
+                    right={<PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>}/>
             </ErrorBoundary>
         )
     }

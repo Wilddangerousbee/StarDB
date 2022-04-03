@@ -13,7 +13,7 @@ export default class App extends Component {
   swapiService = new SwapiService();
 
   state = {
-    pageName: "people" 
+    pageName: "pipel" 
   }
 
   render(){
