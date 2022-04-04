@@ -13,7 +13,13 @@ export default class App extends Component {
   swapiService = new SwapiService();
 
   state = {
-    pageName: "starShip" 
+    pageName: "person" 
+  }
+
+  onChangePage = (pageName) => {
+    this.setState({
+      pageName
+    })
   }
 
   render(){
@@ -21,7 +27,7 @@ export default class App extends Component {
 
     return (
       <div>
-        <Header />
+        <Header onChangePage={this.onChangePage}/>
         <RandomPlanet />
         <PersonPage 
           selectionMethod={pageName === "starShip" ? this.swapiService.getAllStarships : pageName === "planet" ? this.swapiService.getAllPlanets : this.swapiService.getAllPeople}

@@ -2,7 +2,8 @@ import React from 'react';
 
 import './header.css';
 
-const Header = () => {
+const Header = ({onChangePage}) => {
+
   return (
     <div className="header d-flex">
       <h3>
@@ -11,13 +12,13 @@ const Header = () => {
         </a>
       </h3>
       <ul className="d-flex">
-        <li>
+        <li onClick={()=>onChangePage("people")}>
           <a href="#">People</a>
         </li>
-        <li>
+        <li onClick={()=>onChangePage("planet")}>
           <a href="#">Planets</a>
         </li>
-        <li>
+        <li onClick={()=>onChangePage("starShip")}>
           <a href="#">Starships</a>
         </li>
       </ul>

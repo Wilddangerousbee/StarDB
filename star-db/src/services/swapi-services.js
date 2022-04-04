@@ -52,7 +52,7 @@ export default class SwapiService {
 
   _transformPlanet(planet){
      return {
-      id: this._getIdFromUrl(starship.url),
+      id: this._getIdFromUrl(planet.url),
       urlPicture: `${this._urlBasePicturePlanet}${this._getIdFromUrl(planet.url)}.jpg`,
       pupulstion: planet.population,
       rotationPeriod: planet.rotation_period,

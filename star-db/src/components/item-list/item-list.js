@@ -15,6 +15,12 @@ export default class ItemList extends Component {
     this.setPeopel();
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.selectionMethod !== this.props.selectionMethod) {
+      this.setPeopel();
+    }
+  }
+
   setPeopel = () => {
     this.props.selectionMethod()
       .then(item => this.setState({item: item}));

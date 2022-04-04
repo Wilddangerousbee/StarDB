@@ -19,6 +19,9 @@ export default class PersonDetails extends Component {
     if (prevProps.personId !== this.props.personId) {
       this.setPerson();
     }
+    if (prevProps.selectionMethodUncle !== this.props.selectionMethodUncle){
+      this.setPerson();
+    }
   }
 
   onPersonLoaded = (person) => {
