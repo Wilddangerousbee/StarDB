@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 
 import './item-details.css';
 
+const StringItem = ({content, contentName}) => {
+  if (!content) return content;
+  return (
+            <li className="list-group-item">
+              <span className="term">{contentName}</span>
+              <span>{content}</span>
+            </li>
+  )
+}
 export default class ItemDetails extends Component {
   state = {
     person: {
@@ -33,7 +42,8 @@ export default class ItemDetails extends Component {
   }
 
   render() {
-    const {gender, birthYear, eyeColor, name, urlPicture} = this.state.person;
+    const {gender, birthYear, eyeColor, name, urlPicture, 
+      diameter, pupulstion, rotationPeriod, model, length, crew} = this.state.person;
 
     return (
       <div className="item-details card">
@@ -43,18 +53,15 @@ export default class ItemDetails extends Component {
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Gender</span>
-              <span>{gender}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Birth Year</span>
-              <span>{birthYear}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Eye Color</span>
-              <span>{eyeColor}</span>
-            </li>
+            <StringItem content={model} contentName={"Model"}/>
+            <StringItem content={length} contentName={"Length"}/>
+            <StringItem content={crew} contentName={"Crew"}/>
+            <StringItem content={pupulstion} contentName={"Population"}/>
+            <StringItem content={rotationPeriod} contentName={"Rotation Period"}/>
+            <StringItem content={diameter} contentName={"Diameter"}/>
+            <StringItem content={gender} contentName={"Gender"}/>
+            <StringItem content={birthYear} contentName={"Birth Year"}/>
+            <StringItem content={eyeColor} contentName={"Eye Color"}/>
           </ul>
         </div>
       </div>
