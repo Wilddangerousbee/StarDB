@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import SwapiService from '../../services/swapi-services';
+import './item-details.css';
 
-import './person-details.css';
-
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
   state = {
     person: {
 
@@ -38,8 +36,8 @@ export default class PersonDetails extends Component {
     const {gender, birthYear, eyeColor, name, urlPicture} = this.state.person;
 
     return (
-      <div className="person-details card">
-        <img className="person-image"
+      <div className="item-details card">
+        <img className="item-image"
           src={urlPicture} />
 
         <div className="card-body">
