@@ -9,8 +9,8 @@ const StringItem = ({content, contentName}) => {
               <span className="term">{contentName}</span>
               <span>{content}</span>
             </li>
-  )
-}
+  );
+};
 export default class ItemDetails extends Component {
   state = {
     person: {
@@ -47,7 +47,7 @@ export default class ItemDetails extends Component {
 
     return (
       <div className="item-details card">
-        <img className="item-image"
+        <img alt='img' className="item-image"
           src={urlPicture} />
 
         <div className="card-body">

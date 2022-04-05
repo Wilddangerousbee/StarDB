@@ -1,57 +1,39 @@
 import React, { Component } from 'react';
 
-import SwapiService from '../../services/swapi-services';
+import Wrapper from '../../hoc-helpers/WrapperService';
 
 import './item-list.css';
 
-export default class ItemList extends Component {
-  state = {
-    item: [],
-  }
 
-  swapiServise = new SwapiService();
+const ItemList = (props) => {
 
-  componentDidMount(){
-    this.setPeopel();
-  }
-
-  componentDidUpdate(prevProps){
-    if (prevProps.selectionMethod !== this.props.selectionMethod) {
-      this.setPeopel();
-    }
-  }
-
-  setPeopel = () => {
-    this.props.selectionMethod()
-      .then(item => this.setState({item: item}));
-  }
-
-  createList = (item) => {
+  const items = ((item) => {
     return item.map((item) => {
       return(
-        <li 
-            onClick={() => this.props.onSelected(item.id)}
-            key={item.id} className="list-group-item">
-            {item.name}
-            {" "}
-            {item.model}
-            {" "}
-            {item.birthYear}
-            {" "}
-            {item.diameter}
-        </li>
-      )  
-    }
-  );
-  }
-
-  render() {
-    const {item} = this.state;
-
-    return (
-      <ul className="item-list list-group">
-        {this.createList(item)}
-      </ul>
+          <li 
+              onClick={() => props.onSelected(item.id)}
+              key={item.id} className="list-group-item">
+              {item.name}
+              {" "}
+              {item.model}
+              {" "}
+              {item.birthYear}
+              {" "}
+              {item.diameter}
+          </li>
+        )  
+      }
     );
-  }
+  })(props.item)
+
+
+  return (
+    <ul className="item-list list-group">
+      {items}
+    </ul>
+  );
 }
+
+
+
+export default Wrapper(ItemList);
