@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 
-import SwapiService from "../services/swapi-services";
+import SwapiService from "./../../services/swapi-services"
 
-import Loader from "../components/loader";
+import Loader from "../loader";
 
 const Wrapper = (View) => {
     return class extends Component {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import WrapperItem from '../hoc-helpers/WrapperItem';
+
 import './item-details.css';
 
 const StringItem = ({content, contentName}) => {
@@ -11,39 +13,14 @@ const StringItem = ({content, contentName}) => {
             </li>
   );
 };
-export default class ItemDetails extends Component {
-  state = {
-    person: {
 
-    }
-  }
 
-  componentDidMount(){    
-    this.setPerson();
-  }
-
-  componentDidUpdate(prevProps){
-    if (prevProps.personId !== this.props.personId) {
-      this.setPerson();
-    }
-    if (prevProps.selectionMethodUncle !== this.props.selectionMethodUncle){
-      this.setPerson();
-    }
-  }
-
-  onPersonLoaded = (person) => {
-    this.setState({person})
-  };
-
-  setPerson = () => {
-    this.props
-        .selectionMethodUncle(this.props.personId)
-        .then((person) => {this.onPersonLoaded(person)})
-  }
+class ItemDetails extends Component {
 
   render() {
+    console.log(this.props);
     const {gender, birthYear, eyeColor, name, urlPicture, 
-      diameter, pupulstion, rotationPeriod, model, length, crew} = this.state.person;
+      diameter, pupulstion, rotationPeriod, model, length, crew} = this.props.item;
 
     return (
       <div className="item-details card">
@@ -68,3 +45,5 @@ export default class ItemDetails extends Component {
     )
   }
 }
+
+export default WrapperItem(ItemDetails);
