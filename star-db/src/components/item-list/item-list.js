@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import Wrapper from '../hoc-helpers/WrapperService';
+import Wrapper from '../../hoc-helpers/WrapperService';
 
 import './item-list.css';
 
