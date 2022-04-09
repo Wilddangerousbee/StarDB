@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from '../components/loader';
 
 
 const WrapperItemDetails = (ItemCompponent) => {
@@ -6,7 +7,8 @@ const WrapperItemDetails = (ItemCompponent) => {
       state = {
         person: {
     
-        }
+        },
+        loader: true
       }
     
       componentDidMount(){    
@@ -23,7 +25,7 @@ const WrapperItemDetails = (ItemCompponent) => {
       }
     
       onPersonLoaded = (person) => {
-        this.setState({person})
+        this.setState({person: person, loader: false})
       };
     
       setPerson = () => {
@@ -33,9 +35,13 @@ const WrapperItemDetails = (ItemCompponent) => {
       }
   
       render() {
-        const item = this.state.person;
-  
-        return <ItemCompponent item={item} {...this.props}/>;
+        const {person, loader} = this.state;
+        
+        if (loader) {
+          return <Loader/>
+        }
+
+        return <ItemCompponent item={person} {...this.props}/>;
       }
     }
   }

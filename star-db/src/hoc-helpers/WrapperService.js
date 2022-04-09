@@ -8,6 +8,7 @@ const Wrapper = (View) => {
     return class extends Component {
       state = {
         item: [],
+        loade: true,
       }
     
       swapiServise = new SwapiService();
@@ -23,14 +24,16 @@ const Wrapper = (View) => {
       }
     
       setPeopel = () => {
+        this.setState({loade: true})
+
         this.props.selectionMethod()
-          .then(item => this.setState({item: item}));
+          .then(item => this.setState({item: item, loade: false}));
       }
   
       render(){
-        const {item} = this.state;
+        const {item, loade} = this.state;
   
-        if (!item) {
+        if (loade) {
           return <Loader/>
         }
   
