@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import PersonDetails from '../person-details';
 import ItemList from "../item-list";
 import Row from "../row";
+import { SwapiServiceConsumer } from "../swapi-service-provaider";
+
 
 export default class PersonPage extends Component {
     state = {
@@ -18,12 +20,18 @@ export default class PersonPage extends Component {
 
     render(){
         const {personId} = this.state;
-        const {selectionMethod, selectionMethodUncle} = this.props;
 
         return (
-                <Row 
-                    left={<ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>}
-                    right={<PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>}/>
+                <SwapiServiceConsumer>
+                { ({selectionMethod, selectionMethodUncle}) => {
+                    return (
+                        <Row 
+                            left={<ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>}
+                            right={<PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>}/>
+                        )
+                    }
+                }
+                </SwapiServiceConsumer>
         )
     }
 }

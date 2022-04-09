@@ -4,6 +4,7 @@ import './item-details.css';
 
 import WrapperItemDetails from '../../hoc-helpers/WrapperItemDetails';
 
+
 const StringItem = ({content, contentName}) => {
   if (!content) return content;
   return (

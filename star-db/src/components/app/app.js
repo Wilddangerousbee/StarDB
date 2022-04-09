@@ -7,6 +7,8 @@ import PersonPage from '../person-page/person-page';
 
 import SwapiService from '../../services/swapi-services';
 
+import { SwapiServiceProvaider } from '../swapi-service-provaider';
+
 import './app.css';
 
 export default class App extends Component {
@@ -22,17 +24,25 @@ export default class App extends Component {
     })
   }
 
-  render(){
+  formServices (){
     const {pageName} = this.state;
+    const selectionMethod = pageName === "starShip" ? this.swapiService.getAllStarships : pageName === "planet" ? this.swapiService.getAllPlanets : this.swapiService.getAllPeople
+    const selectionMethodUncle = pageName === "starShip" ? this.swapiService.getStarship : pageName === "planet" ? this.swapiService.getPlanet : this.swapiService.getPerson;
 
+    return {
+      selectionMethod: selectionMethod,
+      selectionMethodUncle: selectionMethodUncle
+    }
+  }
+
+  render(){
     return (
       <div>
-        <Header onChangePage={this.onChangePage}/>
-        <RandomPlanet />
-        <PersonPage 
-          selectionMethod={pageName === "starShip" ? this.swapiService.getAllStarships : pageName === "planet" ? this.swapiService.getAllPlanets : this.swapiService.getAllPeople}
-          selectionMethodUncle={pageName === "starShip" ? this.swapiService.getStarship : pageName === "planet" ? this.swapiService.getPlanet : this.swapiService.getPerson}
-        />
+        <SwapiServiceProvaider value = {this.formServices()} > 
+          <Header onChangePage={this.onChangePage}/>
+          <RandomPlanet />
+          <PersonPage/>
+        </SwapiServiceProvaider>
       </div>
     );
   }
