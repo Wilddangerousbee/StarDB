@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SwapiService from '../../services/swapi-services';
+import PropTypes from 'prop-types'
 
 import Loader from '../loader';
 import './random-planet.css';
@@ -9,7 +10,11 @@ export default class RandomPlanet extends Component {
 
     static defaultProps = {
         timeUpdate: 3000,
-      }
+    }
+
+    static propTypes = {
+        timeUpdate: PropTypes.number
+    }
 
     componentDidMount() {
         const {timeUpdate} = this.props
