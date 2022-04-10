@@ -8,7 +8,8 @@ const WrapperItemDetails = (ItemCompponent) => {
         person: {
     
         },
-        loader: true
+        loader: true,
+        error: false
       }
     
       componentDidMount(){    
@@ -25,7 +26,7 @@ const WrapperItemDetails = (ItemCompponent) => {
       }
     
       onPersonLoaded = (person) => {
-        this.setState({person: person, loader: false})
+        this.setState({person: person, loader: false, error: false})
       };
     
       setPerson = () => {
@@ -34,11 +35,16 @@ const WrapperItemDetails = (ItemCompponent) => {
         this.props
             .selectionMethodUncle(this.props.personId)
             .then((person) => {this.onPersonLoaded(person)})
+            .catch(()=> this.setState({error: true}))
       }
   
       render() {
-        const {person, loader} = this.state;
+        const {person, loader, error} = this.state;
         
+        if (error) {
+          return <h1>Error</h1>
+        }
+
         if (loader) {
           return <Loader/>
         }
