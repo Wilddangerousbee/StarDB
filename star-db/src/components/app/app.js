@@ -40,7 +40,7 @@ export default class App extends Component {
       <div>
         <SwapiServiceProvaider value = {this.formServices()} > 
           <Header onChangePage={this.onChangePage}/>
-          <RandomPlanet />
+          <RandomPlanet timeUpdate={2500}/>
           <PersonPage/>
         </SwapiServiceProvaider>
       </div>

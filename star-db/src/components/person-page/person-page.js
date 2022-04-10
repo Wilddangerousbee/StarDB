@@ -11,7 +11,6 @@ class PersonPage extends Component {
     }
 
     onSelected = (id) => {
-        console.log(id);
         this.setState({
             personId: id
         })

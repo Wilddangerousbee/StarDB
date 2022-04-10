@@ -6,10 +6,19 @@ import './random-planet.css';
 export default class RandomPlanet extends Component {
     serviceApi = new SwapiService();
     
+
+    static defaultProps = {
+        timeUpdate: 3000,
+      }
+
     componentDidMount() {
+        const {timeUpdate} = this.props
+
         this.setPlanet();
-        this.setInterval = setInterval(this.setPlanet, 2500);
+        this.setInterval = setInterval(this.setPlanet, timeUpdate);
     }
+
+
 
     componentWillUnmount() {
         clearInterval(setInterval); 
@@ -44,6 +53,7 @@ export default class RandomPlanet extends Component {
 
     render() {
         const {currentPlanet} = this.state;
+        
         return (
         <div className="random-planet jumbotron rounded">
             {this.state.errorPlanet ? <ErrorIndicator /> : currentPlanet.name === undefined ? <Loader /> : <PlanetView currentPlanet={currentPlanet}/>}
@@ -86,4 +96,4 @@ const ErrorIndicator = () => {
             <h1>Ошбика ошибка. лучшие умы уже бьются как это исправить</h1>
         </div>
     )
-}
+};
