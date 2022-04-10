@@ -44,3 +44,8 @@
   transform-origin: 0 0; /* see note above */
 }
 .ldio-s1942dd5t8l div { box-sizing: content-box; }
+
+.boxLoader{
+  margin-top: auto;
+  margin-left: auto;
+}

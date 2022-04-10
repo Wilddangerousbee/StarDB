@@ -29,6 +29,8 @@ const WrapperItemDetails = (ItemCompponent) => {
       };
     
       setPerson = () => {
+        this.setState({loader: true})
+
         this.props
             .selectionMethodUncle(this.props.personId)
             .then((person) => {this.onPersonLoaded(person)})
