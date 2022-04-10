@@ -20,29 +20,14 @@ export default class App extends Component {
     pageName: "person" 
   }
 
-  onChangePage = (pageName) => {
-    this.setState({
-      pageName
-    })
-  }
-
-  formServices (){
-    const {pageName} = this.state;
-    const selectionMethod = pageName === "starShip" ? this.swapiService.getAllStarships : pageName === "planet" ? this.swapiService.getAllPlanets : this.swapiService.getAllPeople
-    const selectionMethodUncle = pageName === "starShip" ? this.swapiService.getStarship : pageName === "planet" ? this.swapiService.getPlanet : this.swapiService.getPerson;
-
-    return {
-      selectionMethod: selectionMethod,
-      selectionMethodUncle: selectionMethodUncle
-    }
-  }
-
   render(){
+    const { swapiService } = this.props;
+
     return (
       <div>
         <Router>
-          <SwapiServiceProvaider value = {this.formServices()} > 
-            <Header onChangePage={this.onChangePage}/>
+          <SwapiServiceProvaider value = {swapiService} > 
+            <Header />
             <RandomPlanet timeUpdate={2500}/>
             <Routes>
               <Route path="/starships" element={

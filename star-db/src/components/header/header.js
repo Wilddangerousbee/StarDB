@@ -2,6 +2,8 @@ import React from 'react';
 
 import './header.css';
 
+import { Link } from 'react-router-dom'
+
 const Header = ({onChangePage}) => {
 
   return (
@@ -12,14 +14,14 @@ const Header = ({onChangePage}) => {
         </a>
       </h3>
       <ul className="d-flex">
-        <li onClick={()=>onChangePage("people")}>
-          <a href="#">People</a>
+        <li>
+          <Link to="/people">People</Link>
         </li>
-        <li onClick={()=>onChangePage("planet")}>
-          <a href="#">Planets</a>
+        <li>
+          <Link to="/planet">Planets</Link>
         </li>
-        <li onClick={()=>onChangePage("starShip")}>
-          <a href="#">Starships</a>
+        <li>
+          <Link to="/starships" >Starships</Link>
         </li>
       </ul>
     </div>
