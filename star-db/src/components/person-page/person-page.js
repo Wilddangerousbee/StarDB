@@ -1,32 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
 import PersonDetails from '../person-details';
-import ItemList from "../item-list";
-import Row from "../row";
+
+import { useParams } from "react-router-dom";
 
 import WrapperConsumet from "../../hoc-helpers/WrapperConsumer";
-class PersonPage extends Component {
-    state = {
-        personId: 2,
-    }
 
-    onSelected = (id) => {
-        this.setState({
-            personId: id
-        })
-    }
+const PersonPage = ({selectionMethod, selectionMethodUncle}) => {
 
-    render(){
-        const {personId} = this.state;
-
-        const {selectionMethod, selectionMethodUncle} = this.props;
-
-        return (
-            <Row 
-                left={<ItemList selectionMethod={selectionMethod} onSelected={this.onSelected}/>}
-                right={<PersonDetails selectionMethodUncle={selectionMethodUncle} personId={personId}/>}/>
-            )
-    }
+    return (
+        <PersonDetails selectionMethodUncle={selectionMethodUncle} personId={useParams().id}/>
+    )
 }
 
 export default WrapperConsumet(PersonPage);

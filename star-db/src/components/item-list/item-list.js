@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import { Link } from 'react-router-dom';
 
 import Wrapper from '../../hoc-helpers/WrapperService';
 
@@ -10,8 +12,7 @@ const ItemList = (props) => {
   const items = ((item) => {
     return item.map((item) => {
       return(
-          <li 
-              onClick={() => props.onSelected(item.id)}
+          <Link to = {'/' + props.urlPath + '/' + item.id} 
               key={item.id} className="list-group-item">
               {item.name}
               {" "}
@@ -20,7 +21,7 @@ const ItemList = (props) => {
               {item.birthYear}
               {" "}
               {item.diameter}
-          </li>
+          </Link>
         )  
       }
     );

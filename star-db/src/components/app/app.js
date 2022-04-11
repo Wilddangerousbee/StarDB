@@ -11,6 +11,8 @@ import { SwapiServiceProvaider } from '../swapi-service-provaider';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import ItemList from '../item-list';
+
 import './app.css';
 
 export default class App extends Component {
@@ -30,16 +32,22 @@ export default class App extends Component {
             <Header />
             <RandomPlanet timeUpdate={2500}/>
             <Routes>
+              <Route path='/' element={<h1>Welcom StarDB</h1>} />
+              
+              <Route path="/planets" element={
+                <ItemList selectionMethod = {this.swapiService.getAllPlanets} urlPath = {"planets"}/>} />
+              <Route path="/people" element={
+                <ItemList selectionMethod = {this.swapiService.getAllPeople} urlPath = {"people"}/>} />
               <Route path="/starships" element={
-                <PersonPage 
-                  selectionMethod = {this.swapiService.getAllStarships} 
-                  selectionMethodUncle = {this.swapiService.getStarship} />} />
-              <Route path="/people" element={<PersonPage 
-                  selectionMethod = {this.swapiService.getAllPeople} 
+                <ItemList selectionMethod = {this.swapiService.getAllStarships} urlPath = {"starships"}/>} />
+
+              <Route path="/people/:id" element={<PersonPage
                   selectionMethodUncle = {this.swapiService.getPerson}/>} />
-              <Route path="/planet" element={<PersonPage 
-                  selectionMethod = {this.swapiService.getAllPlanets} 
+              <Route path="/planets/:id" element={<PersonPage  
                   selectionMethodUncle = {this.swapiService.getPlanet}/>} />
+              <Route path="/starships/:id" element={<PersonPage  
+                  selectionMethodUncle = {this.swapiService.getStarship}/>} />
+              
             </Routes>
           </SwapiServiceProvaider>
         </Router>
