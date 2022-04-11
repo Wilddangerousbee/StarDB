@@ -18,10 +18,6 @@ import './app.css';
 export default class App extends Component {
   swapiService = new SwapiService();
 
-  state = {
-    pageName: "person" 
-  }
-
   render(){
     const { swapiService } = this.props;
 
@@ -34,11 +30,11 @@ export default class App extends Component {
             <Routes>
               <Route path='/' element={<h1>Welcom StarDB</h1>} />
               
-              <Route path="/planets" element={
+              <Route path="/planets/" element={
                 <ItemList selectionMethod = {this.swapiService.getAllPlanets} urlPath = {"planets"}/>} />
-              <Route path="/people" element={
+              <Route path="/people/" element={
                 <ItemList selectionMethod = {this.swapiService.getAllPeople} urlPath = {"people"}/>} />
-              <Route path="/starships" element={
+              <Route path="/starships/" element={
                 <ItemList selectionMethod = {this.swapiService.getAllStarships} urlPath = {"starships"}/>} />
 
               <Route path="/people/:id" element={<PersonPage

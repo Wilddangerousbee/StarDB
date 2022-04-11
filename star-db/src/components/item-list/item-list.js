@@ -6,13 +6,12 @@ import Wrapper from '../../hoc-helpers/WrapperService';
 
 import './item-list.css';
 
-
 const ItemList = (props) => {
 
   const items = ((item) => {
     return item.map((item) => {
       return(
-          <Link to = {'/' + props.urlPath + '/' + item.id} 
+          <Link to = {item.id} 
               key={item.id} className="list-group-item">
               {item.name}
               {" "}
