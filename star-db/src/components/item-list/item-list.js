@@ -11,7 +11,7 @@ const ItemList = (props) => {
   const items = ((item) => {
     return item.map((item) => {
       return(
-          <Link to = {item.id} 
+          <Link to = {'/' + props.urlPath + '/' + item.id} 
               key={item.id} className="list-group-item">
               {item.name}
               {" "}

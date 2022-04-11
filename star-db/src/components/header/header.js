@@ -15,7 +15,7 @@ const Header = ({onChangePage}) => {
       </h3>
       <ul className="d-flex">
         <li>
-          <Link to="/people">People</Link>
+          <Link to="/people/1">People</Link>
         </li>
         <li>
           <Link to="/planets">Planets</Link>

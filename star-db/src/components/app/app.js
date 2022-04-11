@@ -32,17 +32,17 @@ export default class App extends Component {
               
               <Route path="/planets/" element={
                 <ItemList selectionMethod = {this.swapiService.getAllPlanets} urlPath = {"planets"}/>} />
-              <Route path="/people/" element={
-                <ItemList selectionMethod = {this.swapiService.getAllPeople} urlPath = {"people"}/>} />
               <Route path="/starships/" element={
                 <ItemList selectionMethod = {this.swapiService.getAllStarships} urlPath = {"starships"}/>} />
 
               <Route path="/people/:id" element={<PersonPage
-                  selectionMethodUncle = {this.swapiService.getPerson}/>} />
+                  selectionMethod = {this.swapiService.getAllPeople}
+                  selectionMethodUncle = {this.swapiService.getPerson}
+                  urlPath={"people"}/>} />
               <Route path="/planets/:id" element={<PersonPage  
                   selectionMethodUncle = {this.swapiService.getPlanet}/>} />
               <Route path="/starships/:id" element={<PersonPage  
-                  selectionMethodUncle = {this.swapiService.getStarship}/>} />
+                  selectionMethodUncle = {this.swapiService.getStarship} />} />
               
             </Routes>
           </SwapiServiceProvaider>
