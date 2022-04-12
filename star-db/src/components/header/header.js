@@ -24,10 +24,10 @@ const Header = ({onChangePage}) => {
           <Link to="/starships" >Starships</Link>
         </li>
         <li>
-          <Link to="/secret" >secret</Link>
+          <Link to="/secret" >Secret</Link>
         </li>
         <li>
-          <Link to="/login" >login</Link>
+          <Link to="/login" >Login</Link>
         </li>
       </ul>
     </div>
