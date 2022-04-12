@@ -11,6 +11,10 @@ import { SwapiServiceProvaider } from '../swapi-service-provaider';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import LoginPage from '../pages/login-page';
+
+import SecretPage from '../pages/secret-page';
+
 import ItemList from '../item-list';
 
 import './app.css';
@@ -18,8 +22,18 @@ import './app.css';
 export default class App extends Component {
   swapiService = new SwapiService();
 
+  state = {
+    isLoggedIn: false
+  }
+
+  onLogin = () => {
+    this.setState({isLoggedIn: true})
+  } 
+
+
   render(){
     const { swapiService } = this.props;
+    const { isLoggedIn } = this.state;
 
     return (
       <div>
@@ -44,6 +58,9 @@ export default class App extends Component {
               <Route path="/starships/:id" element={<PersonPage  
                   selectionMethodUncle = {this.swapiService.getStarship} />} />
               
+              <Route path='/secret/' element={<SecretPage isLoggedIn={isLoggedIn}/>}/>
+              <Route path='/login/' element={<LoginPage onLogin={this.onLogin} isLoggedIn={isLoggedIn}/>}/>
+
             </Routes>
           </SwapiServiceProvaider>
         </Router>

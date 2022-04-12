@@ -23,6 +23,12 @@ const Header = ({onChangePage}) => {
         <li>
           <Link to="/starships" >Starships</Link>
         </li>
+        <li>
+          <Link to="/secret" >secret</Link>
+        </li>
+        <li>
+          <Link to="/login" >login</Link>
+        </li>
       </ul>
     </div>
   );
