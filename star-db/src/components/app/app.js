@@ -17,6 +17,8 @@ import SecretPage from '../pages/secret-page';
 
 import ItemList from '../item-list';
 
+import { Navigate } from 'react-router-dom';
+
 import './app.css';
 
 export default class App extends Component {
@@ -60,6 +62,8 @@ export default class App extends Component {
               
               <Route path='/secret/' element={<SecretPage isLoggedIn={isLoggedIn}/>}/>
               <Route path='/login/' element={<LoginPage onLogin={this.onLogin} isLoggedIn={isLoggedIn}/>}/>
+
+              <Route path="*" element={<h1>Page not found</h1>}/>
 
             </Routes>
           </SwapiServiceProvaider>
